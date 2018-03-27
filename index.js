@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
 const meow = require('meow')
+const path = require('path')
+
+const processFiles = require('./lib/process-files')
 
 const cli = meow(`
   Usage:
@@ -19,13 +22,33 @@ const cli = meow(`
     Download subs for all videos in current directory
     $ subtitles *
 `, {
-  flags: {
-    lang: {
-      type: 'string',
-      alias: 'l'
+    flags: {
+      lang: {
+        type: 'string',
+        alias: 'l'
+      }
     }
-  }
-})
+  })
 
-console.log('Input: ', cli.input)
-console.log('Args:', cli.flags)
+/*
+  @TODO
+  - Add flag for subtitles extension
+  - Add chalk to logs
+*/
+
+const files = cli.input
+
+if (!files) cli.showHelp()
+
+const lang = cli.flags.lang || 'en'
+
+if (files === '*') {
+  // Grab all files within a directory that resemble a video
+  /* @TODO */
+
+} else {
+  // Grab selected files only
+  processFiles(files, {
+    lang
+  })
+}

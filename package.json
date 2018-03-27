@@ -7,6 +7,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "meow": "^4.0.0"
+    "meow": "^4.0.0",
+    "node-fetch": "^2.1.2",
+    "opensubtitles-api": "^4.0.0"
   }
 }
