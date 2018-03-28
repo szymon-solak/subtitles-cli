@@ -3,6 +3,7 @@
 const meow = require('meow')
 const path = require('path')
 
+const getVideoFiles = require('./lib/get-video-files')
 const processFiles = require('./lib/process-files')
 
 const cli = meow(`
@@ -34,6 +35,8 @@ const cli = meow(`
   @TODO
   - Add flag for subtitles extension
   - Add chalk to logs
+  - Add catch blocks
+  - Tidy up processing files
 */
 
 const files = cli.input
@@ -42,13 +45,7 @@ if (!files) cli.showHelp()
 
 const lang = cli.flags.lang || 'en'
 
-if (files === '*') {
-  // Grab all files within a directory that resemble a video
-  /* @TODO */
-
-} else {
-  // Grab selected files only
-  processFiles(files, {
-    lang
-  })
-}
+const videoFiles = getVideoFiles(files)
+processFiles(videoFiles, {
+  lang
+})
