@@ -6,6 +6,8 @@ const path = require('path')
 const getVideoFiles = require('./lib/get-video-files')
 const processFiles = require('./lib/process-files')
 
+const defaultOptions = require('./defaults')
+
 const cli = meow(`
   Usage:
     $ subtitles [files] [options]
@@ -27,25 +29,30 @@ const cli = meow(`
       lang: {
         type: 'string',
         alias: 'l'
+      },
+      ext: {
+        type: 'string',
+        alias: 'e'
       }
     }
   })
 
 /*
   @TODO
-  - Add flag for subtitles extension
-  - Add chalk to logs
-  - Add catch blocks
   - Tidy up processing files
 */
 
 const files = cli.input
 
-if (!files) cli.showHelp()
+if (!files.length) cli.showHelp()
 
-const lang = cli.flags.lang || 'en'
+const lang = cli.flags.lang || defaultOptions.language
+const extensions = (cli.flags.ext)
+  ? [cli.flags.ext]
+  : defaultOptions.extensions
 
 const videoFiles = getVideoFiles(files)
 processFiles(videoFiles, {
-  lang
+  lang,
+  extensions
 })
