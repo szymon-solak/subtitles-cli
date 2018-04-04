@@ -1,6 +1,7 @@
 {
-  "language": "en",
+  "lang": "en",
   "extensions": [
     "srt"
-  ]
+  ],
+  "retry": 3
 }

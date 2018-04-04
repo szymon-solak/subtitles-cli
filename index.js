@@ -30,29 +30,22 @@ const cli = meow(`
         type: 'string',
         alias: 'l'
       },
-      ext: {
+      extensions: {
         type: 'string',
         alias: 'e'
+      },
+      retry: {
+        type: 'number',
+        alias: 'r'
       }
     }
   })
-
-/*
-  @TODO
-  - Tidy up processing files
-*/
 
 const files = cli.input
 
 if (!files.length) cli.showHelp()
 
-const lang = cli.flags.lang || defaultOptions.language
-const extensions = (cli.flags.ext)
-  ? [cli.flags.ext]
-  : defaultOptions.extensions
+const options = Object.assign({}, defaultOptions, cli.flags)
 
 const videoFiles = getVideoFiles(files)
-processFiles(videoFiles, {
-  lang,
-  extensions
-})
+processFiles(videoFiles, options)
