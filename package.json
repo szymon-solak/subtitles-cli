@@ -6,6 +6,13 @@
     "start": "node index.js"
   },
   "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "subtitles": "index.js"
+  },
+  "engines": {
+    "node": "*"
+  },
   "dependencies": {
     "chalk": "^2.3.2",
     "meow": "^4.0.0",
