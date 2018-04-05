@@ -4,9 +4,9 @@ A small cli made for downloading subtitles. It uses Opensubtitles Api to find th
 
 ## Instalation
 
-Clone the repo to a local folder on your machine and then run
+Clone the repo to a local folder on your machine, get into its directory and run
 
-`npm -g install /subtitles-cli`
+`$ npm link`
 
 ## Usage
 
