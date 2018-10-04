@@ -14,6 +14,10 @@ Clone the repo to a local folder on your machine, get into its directory and run
 
 Options:
 
+__By default, subtitles are downloaded in english, in .srt extension__
+
+__You can adjust the defaults in the `defaults.json` file__
+
 - `-l`, `--lang`: Return specified language of subtitles if available
 - `-e`, `--extension`: Look for subtitles in specified extension
 - `-r`, `--retry`: Max amount of retries to download
@@ -29,4 +33,7 @@ Examples:
 
   # Look for subtitles to all files in a directory in txt format
   $ subtitles * -e txt
+
+  # Retry up to 10 times if something fails
+  $ subtitles * -r 10
 ```
